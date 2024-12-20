@@ -1,0 +1,80 @@
+# Auto detect text files and perform LF normalization
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs
+*.log
+log/
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+lib-cov
+coverage/
+*.lcov
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# MacOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# dotenv environment variables file
+.env
+
+# Build directories
+dist/
+build/
+public/
+out/
+
+# Temporary files
+tmp/
+temp/
+
+# Test coverage reports
+coverage/
+
+# Project-specific
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# TypeScript
+*.tsbuildinfo
+
+# Parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js
+.next
+
+# SvelteKit
+.svelte-kit
+
+# Nuxt.js
+.nuxt
+.env

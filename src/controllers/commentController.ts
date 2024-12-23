@@ -3,7 +3,10 @@ import Comment from '../models/Comment';
 
 // Create a new comment
 export const createComment = async (req: Request, res: Response, next: NextFunction) => {
-    const { comment, userId, articleId } = req.body; 
+    const { comment, articleId } = req.body; 
+
+    const userId = req.user?.id
+
     try {
         const newComment = await Comment.create({ comment, userId, articleId });
         return res.status(201).json(newComment);
@@ -50,8 +53,11 @@ export const updateComment = async (req: Request, res: Response, next: NextFunct
 // Delete a comment
 export const deleteComment = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
+
+  const userId = req.user?.id
+
   try {
-    const result = await Comment.destroy({ where: { commentId: id } }); 
+    const result = await Comment.destroy({ where: { commentId: id, userId } }); 
     if (result === 0) {
       return res.status(404).json({ message: 'Comment not found' }); 
     }

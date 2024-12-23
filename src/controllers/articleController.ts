@@ -4,7 +4,7 @@ import Article from '../models/Article';
 export const createArticle = async (req: Request, res: Response, next: NextFunction) => {
     const { title, content } = req.body;
 
-    const userId = '00000000-0000-0000-0000-000000000001'; // Test UUID
+    const userId = req.user?.id; // Test UUID
     
     try {
         const article = await Article.create({
@@ -24,7 +24,8 @@ export const createArticle = async (req: Request, res: Response, next: NextFunct
 };
 
 export const getArticles = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = '00000000-0000-0000-0000-000000000001'; // Test UUID
+
+    const userId = req.user?.id;
     
     try {
         const articles = await Article.findAll({ where: { userId: userId } });
@@ -40,7 +41,7 @@ export const getArticles = async (req: Request, res: Response, next: NextFunctio
 
 export const getArticle = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
-    const userId = '00000000-0000-0000-0000-000000000001'; // Test UUID
+     const userId = req.user?.id;
     
     try {
         const article = await Article.findOne({ 
@@ -67,7 +68,7 @@ export const getArticle = async (req: Request, res: Response, next: NextFunction
 export const updateArticle = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
     const { title, content } = req.body;
-    const userId = '00000000-0000-0000-0000-000000000001'; // Test UUID
+    const userId = req.user?.id;
 
     try {
         const article = await Article.findOne({ 
@@ -97,8 +98,7 @@ export const updateArticle = async (req: Request, res: Response, next: NextFunct
 
 export const deleteArticle = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
-    const userId = '00000000-0000-0000-0000-000000000001'; // Test UUID
-
+    const userId = req.user?.id;
     try {
         const article = await Article.findOne({ 
             where: { 

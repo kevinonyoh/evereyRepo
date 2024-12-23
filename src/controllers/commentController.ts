@@ -30,11 +30,15 @@ export const getCommentsByArticle = async (req: Request, res: Response, next: Ne
 
 // Update a comment by ID
 export const updateComment = async (req: Request, res: Response, next: NextFunction) => {
+  
   const { id } = req.params; 
   const { comment } = req.body; 
 
+
+  const userId = req.user?.id
+
   try {
-      const existingComment = await Comment.findByPk(id); 
+      const existingComment = await Comment.findOne({where: {commentId: id, userId }}); 
       if (!existingComment) {
           return res.status(404).json({ error: 'Comment not found' }); 
       }

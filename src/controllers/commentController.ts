@@ -65,7 +65,7 @@ export const deleteComment = async (req: Request, res: Response, next: NextFunct
     if (result === 0) {
       return res.status(404).json({ message: 'Comment not found' }); 
     }
-    return res.status(204).json(); 
+    return res.status(204).json({message: "comment deleted successfully"}); 
   } catch (error) {
     console.error(error); 
     return res.status(500).json({ error: 'Error deleting comment' }); 

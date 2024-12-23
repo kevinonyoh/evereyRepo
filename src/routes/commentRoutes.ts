@@ -9,7 +9,7 @@ const router = Router();
 
 router.post('/comment', auth, createComment); // create a comment
 router.get('/:articleId/comment', auth, getCommentsByArticle); // get all comment for a specific article
-router.put('/:id', auth, updateComment); // update a comment
-router.delete('/:id', auth, deleteComment); // delete a comment
+router.put('/comment/:id', auth, updateComment); // update a comment
+router.delete('/comment/:id', auth, deleteComment); // delete a comment
 
 export default router;

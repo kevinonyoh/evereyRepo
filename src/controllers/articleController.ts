@@ -28,7 +28,7 @@ export const getArticles = async (req: Request, res: Response, next: NextFunctio
     const userId = req.user?.id;
     
     try {
-        const articles = await Article.findAll({ where: { userId: userId } });
+        const articles = await Article.findAll({});
         res.status(200).json(articles);
     } catch (error) {
         console.error('Get Articles Error:', error);
@@ -46,8 +46,7 @@ export const getArticle = async (req: Request, res: Response, next: NextFunction
     try {
         const article = await Article.findOne({ 
             where: { 
-                id: id, 
-                userId: userId 
+                id: id
             } 
         });
         

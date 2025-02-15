@@ -1,29 +1,25 @@
-import { Worker } from 'bullmq';
 import { emailNotification } from './email-template';
+import { myQueue } from './emailQueue';
 
-const worker = new Worker(
-  'myQueue',
-  async (job) => {
-    
-    const {email, message, subject} = job.data;
 
-    emailNotification(email, message,  subject)
 
-    console.log(`Processing job: ${job.id}, Data:`);
 
-  },
-  {
-    connection: {
-      host: 'localhost',
-      port: 6379,
-    },
-  }
-);
 
-worker.on('completed', (job) => {
+myQueue.process('sendEmail', async (job) => {
+  const { email, message, subject } = job.data;
+  
+  
+  emailNotification(email, message, subject);
+  console.log(`Processing job: ${job.id}, Data: ${JSON.stringify(job.data)}`);
+});
+
+
+myQueue.on('completed', (job) => {
   console.log(`Job ${job.id} completed!`);
 });
 
-worker.on('failed', (job, err) => {
+myQueue.on('failed', (job, err) => {
   console.log(`Job ${job?.id} failed with error: ${err.message}`);
 });
+
+console.log('Email processor is running...');

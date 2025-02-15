@@ -154,6 +154,8 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
 
         const users = await User.findOne({where: {email}});
         
+        if(!users) throw new ErrorHandler(400, "user not found");
+
        await login(users, res);
 
      } catch (error) {

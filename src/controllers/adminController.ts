@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import Admin from '../models/admin';
-import ErrorHandler from '../utils/errorHandler';
+import ErrorHandler from '../utils/ErrorHandler';
 import * as bcrypt from "bcrypt";
 import { emailTransporter } from '../utils/notification';
 import responseHandler from '../utils/responseHandler';

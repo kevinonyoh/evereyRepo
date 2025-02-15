@@ -4,7 +4,7 @@ import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 import { generate6DigitPin } from '../utils/helper';
 import { redisSet, redisValidate } from '../utils/redis';
-import ErrorHandler from '../utils/errorHandler';
+import ErrorHandler from '../utils/ErrorHandler';
 import responseHandler from '../utils/responseHandler';
 import Institution from '../models/institution';
 import { AcademicRole } from '../interfaces/model.interface';

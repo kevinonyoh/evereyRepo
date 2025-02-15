@@ -7,6 +7,7 @@ import commentRoutes from './routes/commentRoutes';
 import UsersRoutes from './routes/UsersRoutes';
 import adminRoutes from './routes/adminRoutes';
 import './utils/emailProcessor';
+import errorHandler from './middleware/error';
 
 require('dotenv').config();
 
@@ -39,6 +40,8 @@ app.use('/v1/api/admin', adminRoutes);
 app.get('/', (req, res) => {
     res.send('Server setup correctly!');
 });
+
+app.use(errorHandler);
 
  sequelize.sync({ force: false }).then(() => {
     console.log('Database & tables created!');

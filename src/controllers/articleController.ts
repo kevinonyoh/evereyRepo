@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { v2 as cloudinary } from "cloudinary";
 import Article from "../models/Article";
 import responseHandler from "../utils/responseHandler";
-import ErrorHandler from "../utils/errorHandler";
+import ErrorHandler from "../utils/ErrorHandler";
 import { statusPublish } from "../interfaces/model.interface";
 
 import { Op } from "sequelize";
